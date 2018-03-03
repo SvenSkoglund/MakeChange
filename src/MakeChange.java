@@ -15,63 +15,53 @@ public class MakeChange {
 
 	}
 
-	private static void makeChange(double ask) {
-		// TODO Auto-generated method stub
-		int twenties = (int) (ask / 20);
-		double twentyRemaining = ask % 20;
+	private static void makeChange(double remainder) {
 
-		int tens = (int) (twentyRemaining / 10);
-		double tenRemaining = (twentyRemaining % 10);
-
-		int fives = (int) (tenRemaining / 5);
-		double fiveRemaining = (tenRemaining % 5);
-
-		int ones = (int) (fiveRemaining / 1);
-		double oneRemaining = (fiveRemaining % 1);
-
-		int quarters = (int) (oneRemaining / .25);
-		double quartersRemaining = (oneRemaining % .25);
-
-		int dimes = (int) (quartersRemaining / .1);
-		double dimesRemaining = (quartersRemaining % .1);
-
-		int nickels = (int) (dimesRemaining / .05);
-		double nickelsRemaining = (dimesRemaining % .05);
-
-		int pennies = (int) Math.round((nickelsRemaining / .01));
-		double penniesRemaining = (nickelsRemaining % .01);
-		
-		double testTotalChange = twenties * 20 + tens * 10 + fives * 5 + ones * 1 + quarters * .25 + dimes * .10 + nickels * .05 + pennies * .01;
-		System.out.println(ask);
-		System.out.println(testTotalChange);
-		System.out.println("$20: " + twenties);
-		System.out.println("$10: " + tens);
-		System.out.println("$5: " + fives);
-		System.out.println("$1: " + ones);
-		System.out.println("Quarters: " + quarters);
-		System.out.println("Dimes: " + dimes);
-		System.out.println("Nickels: " + nickels);
-		System.out.println("Pennies: " + pennies);
+		String[] currencies = { "$20", "$10", "$5", "1", "Quarters", "Dimes", "Nickels", "Pennies" };
+		int[] values = { 2000, 1000, 500, 100, 25, 10, 05, 01 };
+		int[] returnedCurrencies = new int[8];
+		int change = (int) (Math.round(remainder * 100));
+		double total = 0;
+		for (int i = 0; i < currencies.length; i++) {
+			returnedCurrencies[i] = (int) (change / values[i]);
+			System.out.println(currencies[i] + ": " + returnedCurrencies[i]);
+			change = change % values[i];
+			total = total + returnedCurrencies[i] * values[i];
+		}
+		sampleUI("Your change is $" + total / 100);
 
 	}
 
 	public static double ask() {
 		while (true) {
-			System.out.println("Enter the cost");
+			sampleUI("Enter the cost of goods");
 			double cost = scanner.nextDouble();
-			System.out.println("Enter the amount given");
+			sampleUI("Enter the amount given");
 			double given = scanner.nextDouble();
-
 			double diff = given - cost;
+			
 			if (diff < 0) {
-				System.out.println("You didn't pay enough. Try again!");
+				System.err.println("You didn't pay enough. Try again!");
 				continue;
 			}
 			if (diff == 0) {
 				System.out.println("You paid in perfect change. Goodbye!");
 				System.exit(0);
 			}
+
 			return diff;
 		}
+	}
+
+	public static void sampleUI(String toPrint) {
+		String stars = "";
+		for (int i = 0; i < toPrint.length()+2; i++) {
+			stars = stars + "*";
+		}
+
+		System.out.println(stars);
+		System.out.println("*" + toPrint + "* ");
+		System.out.println(stars);
+
 	}
 }
