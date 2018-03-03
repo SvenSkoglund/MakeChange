@@ -40,7 +40,10 @@ public class MakeChange {
 
 		int pennies = (int) Math.round((nickelsRemaining / .01));
 		double penniesRemaining = (nickelsRemaining % .01);
-
+		
+		double testTotalChange = twenties * 20 + tens * 10 + fives * 5 + ones * 1 + quarters * .25 + dimes * .10 + nickels * .05 + pennies * .01;
+		System.out.println(ask);
+		System.out.println(testTotalChange);
 		System.out.println("$20: " + twenties);
 		System.out.println("$10: " + tens);
 		System.out.println("$5: " + fives);
