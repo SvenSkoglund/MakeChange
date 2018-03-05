@@ -21,7 +21,7 @@ public class MakeChange {
 		
 		// These variables hold places for the names, values, and amount returned of
 		// each bill/coin.
-		String[] currencies = { "$20", "$10", "$5", "1", "Quarters", "Dimes", "Nickels", "Pennies" };
+		String[] currencies = { "$20", "$10", "$5", "$1", "Quarters", "Dimes", "Nickels", "Pennies" };
 		int[] values = { 2000, 1000, 500, 100, 25, 10, 05, 01 };
 		int[] returnedCurrencies = new int[8];
 
@@ -39,7 +39,7 @@ public class MakeChange {
 		// iteration through the loop
 		for (int i = 0; i < currencies.length; i++) {
 			returnedCurrencies[i] = (int) (change / values[i]);
-			System.out.printf("%10s: %4d\n",currencies[i] ,returnedCurrencies[i]);
+			if (returnedCurrencies[i] > 0 ) System.out.printf("%10s: %4d\n",currencies[i] ,returnedCurrencies[i]);
 			change = change % values[i];
 			total = total + returnedCurrencies[i] * values[i];
 		}
