@@ -74,7 +74,7 @@ public class MakeChange {
 		}
 	}
 
-	//This method creates a border of stars around given to the method.
+	//This method creates a border of stars around a String given to the method.
 	public static void sampleUI(String toPrint) {
 		String stars = "";
 		for (int i = 0; i < toPrint.length() + 2; i++) {
