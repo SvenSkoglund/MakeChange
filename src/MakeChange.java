@@ -35,7 +35,7 @@ public class MakeChange {
 		// In this loop, we calculate the amount of a bill/coin that should be taken
 		// from the remainder, starting with the highest bill/coin. Then we calculate
 		// the amount of remainder left after removing that bill. We then repeat this
-		// for the bill of the next lowest value. We also update the total with each
+		// for the bill of the next lowest value. We also updat``e the total with each
 		// iteration through the loop
 		for (int i = 0; i < currencies.length; i++) {
 			returnedCurrencies[i] = (int) (change / values[i]);
